@@ -1,7 +1,7 @@
 <article class="flex flex-col shadow my-4">
     <!-- Article Image -->
    
-    <a href="#" class="hover:opacity-75">
+    <a href="{{route('view',$post)}}" class="hover:opacity-75">
         <img src="{{ $post->getThumbnail()}}">
     </a>
     <div class="bg-white flex flex-col justify-start p-6">
@@ -14,7 +14,7 @@
         </p>
         <h1 class="text-2xl font-bold pb-3">Introduction</h1>
         <p class="pb-3">{{$post->shortBody()}}</p>
-        <a href="" class="uppercase "><div class="flex items-center py-2 px-3 text-gray-800 hover:text-black w-auto"> Cotinue reading <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 ml-2">
+        <a href="{{route('view',$post)}}" class="uppercase "><div class="flex items-center py-2 px-3 text-gray-800 hover:text-black w-auto"> Cotinue reading <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 ml-2">
             <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 8.25 21 12m0 0-3.75 3.75M21 12H3" />
           </svg>
         </div>
