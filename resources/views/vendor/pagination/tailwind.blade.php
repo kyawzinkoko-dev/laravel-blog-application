@@ -58,7 +58,7 @@
                         {{-- "Three Dots" Separator --}}
                         @if (is_string($element))
                             <span aria-disabled="true">
-                                <span class="relative inline-flex items-center px-4 py-2 -ml-px text-sm font-medium   cursor-default leading-5">{{ $element }}</span>
+                                <span class="relative inline-flex items-center px-4 py-2 text-sm font-medium   cursor-default">{{ $element }}</span>
                             </span>
                         @endif
 
@@ -67,10 +67,10 @@
                             @foreach ($element as $page => $url)
                                 @if ($page == $paginator->currentPage())
                                     <span aria-current="page">
-                                        <span class="relative inline-flex bg-blue-700 transition-colors text-white hover:bg-blue-600 items-center px-4 py-2 -ml-px text-sm font-medium ">{{ $page }}</span>
+                                        <span class="relative inline-flex bg-blue-700 transition-colors text-white hover:bg-blue-600 items-center px-4 py-2 font-medium ">{{ $page }}</span>
                                     </span>
                                 @else
-                                    <a href="{{ $url }}" class="relative inline-flex items-center px-4 py-2 -ml-px text-sm font-medium text-gray-700 bg-white  leading-5 hover:bg-blue-500  hover:text-white" aria-label="{{ __('Go to page :page', ['page' => $page]) }}">
+                                    <a href="{{ $url }}" class="relative inline-flex items-center px-4  text-sm font-medium text-gray-700 bg-white  leading-5 hover:bg-blue-500  hover:text-white" aria-label="{{ __('Go to page :page', ['page' => $page]) }}">
                                         {{ $page }}
                                     </a>
                                 @endif

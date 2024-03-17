@@ -79,12 +79,11 @@
         </div>
         <div :class="open ? 'block': 'hidden'" class="w-full flex-grow sm:flex sm:items-center sm:w-auto">
             <div class="w-full container mx-auto flex flex-col sm:flex-row items-center justify-center text-sm font-bold uppercase mt-0 px-6 py-2">
-                <a href="#" class="hover:bg-gray-400 rounded py-2 px-4 mx-2">Technology</a>
-                <a href="#" class="hover:bg-gray-400 rounded py-2 px-4 mx-2">Automotive</a>
-                <a href="#" class="hover:bg-gray-400 rounded py-2 px-4 mx-2">Finance</a>
-                <a href="#" class="hover:bg-gray-400 rounded py-2 px-4 mx-2">Politics</a>
-                <a href="#" class="hover:bg-gray-400 rounded py-2 px-4 mx-2">Culture</a>
-                <a href="#" class="hover:bg-gray-400 rounded py-2 px-4 mx-2">Sports</a>
+                <a href="#" class="hover:bg-blue-700 rounded py-2 px-4 mx-2 hover:text-white">Home</a>
+                @foreach ($categories as $category)
+                <a href="{{route('by-category',$category)}}" class="hover:bg-blue-700 hover:text-white rounded py-2 px-4 mx-2">{{$category->title}}</a>
+                @endforeach
+                <a href="#" class="hover:bg-blue-700 hover:text-white rounded py-2 px-4 mx-2">Contact Us</a>
             </div>
         </div>
     </nav>

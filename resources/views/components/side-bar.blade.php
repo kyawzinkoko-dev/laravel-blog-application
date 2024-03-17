@@ -2,7 +2,7 @@
     <div class="w-full bg-white shadow flex flex-col my-4 p-6">
         <h3 class="font-semibold text-lg">All Categories</h3>
         @foreach ($categories as $category)
-            <a href="">{{$category->title}} ({{$category->total}})</a>
+            <a href="{{ route('by-category',$category)}}">{{$category->title}} ({{$category->total}})</a>
         @endforeach
     </div>
     <div class="w-full bg-white shadow flex flex-col my-4 p-6">
