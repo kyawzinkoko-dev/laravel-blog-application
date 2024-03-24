@@ -17,7 +17,9 @@ class Post extends Model
         'body',
         'active',
         'published_at',
-        'user_id'
+        'user_id',
+        'meta_title',
+        'meta_description'
     ];
     protected $casts=[
         'published_at'=>'datetime'

@@ -8,6 +8,7 @@ use App\Models\Post;
 use Filament\Forms;
 use Filament\Forms\Components\Card;
 use Filament\Forms\Components\Grid;
+use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
@@ -47,6 +48,8 @@ class PostResource extends Resource
                     Forms\Components\RichEditor::make('body')
                         ->required()
                         ->columnSpanFull(),
+                        TextInput::make('meta_title'),
+                        TextInput::make('meta_description'),
                     Forms\Components\Toggle::make('active')
                         ->required(),
                     Forms\Components\DateTimePicker::make('published_at')

@@ -15,6 +15,7 @@ class PostController extends Controller
      */
     public function index()
     {
+        
         $posts = Post::query()
             ->where('active', '=', 1)
             ->whereDate('published_at', '<', Carbon::now())
@@ -76,6 +77,6 @@ class PostController extends Controller
         ->whereDate('published_at','<=',Carbon::now())
         ->orderBy('published_at','desc')
         ->paginate(10);
-        return view('home',compact('posts'));
+        return view('posts.index',compact('posts','category'));
    }
 }
