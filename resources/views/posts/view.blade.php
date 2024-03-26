@@ -7,6 +7,7 @@
             <!-- Article Image -->
             <a href="#" class="hover:opacity-75">
                 <img src="{{ $post->getThumbnail() }}" />
+                
             </a>
             <div class="bg-white flex flex-col justify-start p-6">
                 <div class="flex gap-3">
@@ -31,7 +32,7 @@
                     <a href="{{ route('view', $prev) }}" class=" bg-white block shadow hover:shadow-md text-left p-6">
                         <p class="text-lg text-blue-800 font-bold flex items-center"><i
                                 class="fas fa-arrow-left pr-1"></i> Previous</p>
-                        <p class="pt-2">{{ $prev->title }}</p>
+                        <p class="pt-2">{{Illuminate\Support\Str::words( $prev->title,5) }}</p>
                     </a>
                 @endif
             </div>
