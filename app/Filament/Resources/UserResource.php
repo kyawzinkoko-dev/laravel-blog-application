@@ -6,6 +6,7 @@ use App\Filament\Resources\UserResource\Pages;
 use App\Filament\Resources\UserResource\RelationManagers;
 use App\Models\User;
 use Filament\Forms;
+use Filament\Forms\Components\DateTimePicker;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -27,15 +28,22 @@ class UserResource extends Resource
         return $form
             ->schema([
                 TextInput::make('name')
-                ->required(),
-                TextInput::make('email_verified_at')
-                ->required(),
-                TextInput::make('email')
-                ->required(),
-                TextInput::make('created_at')
-                ->required(),
-                TextInput::make('updated_at')
                 ->required()
+                ->maxLength(255),
+                TextInput::make('email')
+                ->required()
+                ->maxLength(255),
+              TextInput::make('password')
+              ->password()
+              ->hiddenOn('edit')
+              ->required()
+              ->visibleOn('create')
+              ->confirmed(),
+              TextInput::make('password_confirmation')
+              ->password()
+              ->hiddenOn('edit')
+              ->required()
+              ->visibleOn('create')
             ]);
     }
 
@@ -44,10 +52,13 @@ class UserResource extends Resource
         return $table
             ->columns([
                 TextColumn::make('name'),
-                TextColumn::make('email_verified_at'),
+                TextColumn::make('email_verified_at')
+                ->dateTime(),
                 TextColumn::make('email'),
-                TextColumn::make('created_at'),
+                TextColumn::make('created_at')
+                ->dateTime(),
                 TextColumn::make('updated_at')
+                ->dateTime()
             ])
             ->filters([
                 //
