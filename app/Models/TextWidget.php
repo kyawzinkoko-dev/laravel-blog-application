@@ -39,7 +39,8 @@ class TextWidget extends Model
             ->first();
         });
         if ($widgets) {
-            return $widgets->content;
+            $widget=\Illuminate\Support\Str::words($widgets->content,'15');
+            return $widget;
         }
         return '';
     }

@@ -23,9 +23,8 @@ class CreateUser extends CreateRecord
     protected function mutateFormDataBeforeCreate(array $data): array
     {
         //insert email verified date before creating data
-       
-       // $data['email_verified_at']=Carbon::now();
-        //password encrypt before create 
+       $data['email_verified_at']=Carbon::now();
+        //password encrypt  create 
         $data['password']=bcrypt($data['password']);
         return $data;
     }

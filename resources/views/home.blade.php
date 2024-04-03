@@ -1,25 +1,31 @@
 
 
 <x-app-layout meta-description="My Personnal Blog about Technology">
-    <section class="w-full md:w-2/3 flex flex-col items-center px-3">
+    <div class="container mx-auto max-w-3xl py-6">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+            {{-- Latest Post --}}
+            <div class=" col-span-2">
+                <h3 class="text-blue-500 uppercase pb-1 mb-3 text-lg sm:text-xl border-b-2 border-b-blue-500">Latest Post</h3>
+            </div>
+            {{-- Popular Post --}}
+            <div class=" col-span-1">Popular post</div>
+        </div>
+        {{-- Recommand posts --}}
+        <div>
+
+        </div>
+        {{-- latest categories --}}
+        <div>
+        
+        </div>
+    </div>
+    {{-- <section class="w-full md:w-2/3 flex flex-col items-center px-3">
 
         @foreach ($posts as $post)
        
         <x-post-item :post="$post"></x-post-item>
         @endforeach
         
-        {{-- <div class="w-full flex pt-6">
-           
-            <a href="#" class="w-1/2 bg-white shadow hover:shadow-md text-left p-6">
-                <p class="text-lg text-blue-800 font-bold flex items-center"><i class="fas fa-arrow-left pr-1"></i> Previous</p>
-                <p class="pt-2"></p>
-            </a>
-            <a href="#" class="w-1/2 bg-white shadow hover:shadow-md text-right p-6">
-                <p class="text-lg text-blue-800 font-bold flex items-center justify-end">Next <i class="fas fa-arrow-right pl-1"></i></p>
-                <p class="pt-2">Lorem Ipsum Dolor Sit Amet Dolor Sit Amet</p>
-            </a>
-        </div> --}}
-       
         {{$posts->links()}}
        
         <div class="w-full flex flex-col text-center md:text-left md:flex-row shadow bg-white mt-10 mb-10 p-6">
@@ -47,5 +53,5 @@
         </div>
     
     </section>
-    <x-side-bar/>
+    <x-side-bar/> --}}
 </x-app-layout>

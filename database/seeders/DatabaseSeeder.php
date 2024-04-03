@@ -18,14 +18,14 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         /** @var \App\Models\User $adminUser */
-        $adminUser = User::factory()->create([
-            'name'=>'Admin',
-            'email'=>'admin@example.com',
-            'password'=>bcrypt('password@')
-        ]);
-        $userRole = Role::create(['name'=>'admin']);
-        $adminUser->assignRole($userRole);
-         //\App\Models\Post::factory(10)->create();
+        // $adminUser = User::factory()->create([
+        //     'name'=>'Admin',
+        //     'email'=>'admin@example.com',
+        //     'password'=>bcrypt('password@')
+        // ]);
+        // $userRole = Role::create(['name'=>'admin']);
+        // $adminUser->assignRole($userRole);
+         \App\Models\Post::factory(20)->create();
 
         // \App\Models\User::factory()->create([
         //     'name' => 'Test User',

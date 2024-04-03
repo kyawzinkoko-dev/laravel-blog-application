@@ -12,6 +12,7 @@
     {{-- <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet"> --}}
     {{-- alpin js  --}}
     {{-- <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>   --}}
+    @livewireStyles
         @vite(['resources/css/app.css','resources/js/app.js'])
     <style>
         @import url('https://fonts.googleapis.com/css?family=Karla:400,700&display=swap');
@@ -157,6 +158,6 @@
     </footer>
 
     
-
+    @livewireScripts
 </body>
 </html>
