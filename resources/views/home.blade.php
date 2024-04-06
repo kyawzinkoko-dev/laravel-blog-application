@@ -1,22 +1,57 @@
-
-
 <x-app-layout meta-description="My Personnal Blog about Technology">
-    <div class="container mx-auto max-w-3xl py-6">
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-            {{-- Latest Post --}}
-            <div class=" col-span-2">
-                <h3 class="text-blue-500 uppercase pb-1 mb-3 text-lg sm:text-xl border-b-2 border-b-blue-500">Latest Post</h3>
+    <div class="container mx-auto max-w-5xl py-6">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-9 mb-8">
+            <!-- Latest Post -->
+            <div class="col-span-2">
+                <h2 class="text-lg sm:text-xl font-bold text-blue-500 uppercase pb-1 border-b-2 border-blue-500 mb-3">
+                    Latest Post
+                </h2>
+                <x-post-item :post="$latestPost"></x-post-item>
             </div>
-            {{-- Popular Post --}}
-            <div class=" col-span-1">Popular post</div>
+
+            <!-- Popular 3 post -->
+            <div>
+                <h2 class="text-lg sm:text-xl font-bold text-blue-500 uppercase pb-1 border-b-2 border-blue-500 mb-3">
+                    Popular Posts
+                </h2>
+                @foreach ($popularPosts as $post)
+                    <div class="grid grid-cols-4 gap-2 mb-4">
+                        <a href="{{route('view',$post)}}" class="pt-1">
+                            <img src="{{ $post->getThumbnail() }}" alt="{{ $post->title }}" />
+
+                        </a>
+                        <div class=" col-span-3">
+                            <a href="{{route("view",$post)}}"><h3 class="font-semibold uppercase whitespace-nowrap truncate">{{ $post->title }}</h3></a>
+                            
+                            <p class="text-xs">{{ $post->shortBody(10) }}</p>
+                            @if ($post->categories)
+                                <div class="flex items-center gap-2 mb-2">
+                                    @foreach ($post->categories as $category)
+                                        <a href="{{ route('by-category', $category) }}"
+                                            class="bg-blue-500 text-sm hover:bg-blue-700 text-white rounded p-1">{{ $category->title }}</a>
+                                    @endforeach
+                                </div>
+                            @endif
+                        </div>
+                    </div>
+                @endforeach
+            </div>
         </div>
         {{-- Recommand posts --}}
-        <div>
 
+        <div>
+            <h2 class="text-lg sm:text-xl font-bold text-blue-500 uppercase pb-1 border-b-2 border-blue-500 mb-3">
+                Recommand Posts
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                @foreach ($recommandPosts as $post)
+                    <x-post-item :post="$post" :showAuthor="false"></x-post-item>
+                @endforeach
+            </div>
         </div>
         {{-- latest categories --}}
         <div>
-        
+
         </div>
     </div>
     {{-- <section class="w-full md:w-2/3 flex flex-col items-center px-3">

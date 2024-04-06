@@ -87,7 +87,7 @@
         <div :class="open ? 'block': 'hidden'" class="w-full flex-grow sm:flex sm:items-center sm:w-auto">
             
             <div class="w-full container mx-auto flex  sm:flex-row items-center justify-between text-sm font-bold uppercase mt-0 px-6 py-2">
-                <div> <a href="#" class="hover:bg-blue-700 rounded py-2 px-4 mx-2 hover:text-white">Home</a>
+                <div> <a href="{{route('home')}}" class="hover:bg-blue-700 rounded py-2 px-4 mx-2 hover:text-white">Home</a>
                     @foreach ($categories as $category)
                     <a href="{{route('by-category',$category)}}" class="hover:bg-blue-700 hover:text-white rounded py-2 px-4 mx-2">{{$category->title}}</a>
                     @endforeach
@@ -141,14 +141,14 @@
     </nav>
 
 
-    <div class="container mx-auto flex flex-wrap py-6">
+    
 
         <!-- Post Section -->
        {{$slot}}
 
         <!-- Sidebar Section -->
         
-    </div>
+    
 
     <footer class="w-full border-t bg-white pb-12">
        
