@@ -1,7 +1,7 @@
 {{-- $post comming from Postcontroller show method  --}}
 <x-app-layout :meta-title="$post->meta_title ?: $post->title" :meta-description="$post->meta_description">
    <div class="flex">
-    <section class="w-full md:w-2/3 flex flex-col items-center px-3">
+    <section class="w-full md:w-2/3 flex flex-col px-3">
 
         <article class="flex flex-col shadow my-4">
             <!-- Article Image -->
@@ -48,7 +48,7 @@
                 @endif
                 </div>
         </div>
-        
+        <livewire:comments/>
     </section>
     <x-side-bar/>
 </div>

@@ -50,34 +50,48 @@ class PostController extends Controller
                         ->on('t.post_id', '<>', 'cp.post_id');
                 })
                 ->select('posts.*')
-                ->where("posts.id" ,'<>',DB::raw('t.post_id'))
+                ->where("posts.id", '<>', DB::raw('t.post_id'))
                 ->setBindings([$user->id])
                 ->limit(3)
                 ->get();
-        } 
-          //if not authorized - show popular post based on views
-          else {
+        }
+        //if not authorized - show popular post based on views
+        else {
             $recommandPosts = Post::query()
                 ->leftJoin('post_views', 'posts.id', '=', 'post_views.post_id')
                 ->select('posts.*', DB::raw('COUNT(post_views.id) as view_count'))
                 ->where('active', 1)
-                ->whereDate('published_at', Carbon::now())
+                ->whereDate('published_at', '<', Carbon::now())
                 ->orderByDesc('view_count')
                 ->groupBy('posts.id')
                 ->limit(3)
                 ->get();
         }
-      
 
         //show recent categories with their latest post 
-
+        $categories = Category::query()
+            // ->with(['posts'=>function($query){
+            //     $query->orderByDesc('published_at')->limit(3);
+            // }])
+            ->whereHas('posts', function ($query) {
+                $query->where('active', '=', 1)
+                    ->whereDate('published_at', '<', Carbon::now());
+            })
+            ->select('categories.*')
+            ->selectRaw('MAX(posts.published_at) as max_date')
+            ->leftJoin('category_post', 'categories.id', '=', 'category_post.category_id')
+            ->leftJoin('posts', 'posts.id', '=', 'category_post.post_id')
+            ->orderByDesc('max_date')
+            ->groupBy('categories.id')
+            ->limit(5)
+            ->get();
         // $posts = Post::query()
         //     ->where('active', '=', 1)
         //     ->whereDate('published_at', '<', Carbon::now())
         //     ->orderBy('published_at', 'desc')
         //     ->paginate(10);
 
-        return view('home', compact('latestPost', 'popularPosts', 'recommandPosts'));
+        return view('home', compact('latestPost', 'popularPosts', 'recommandPosts', 'categories'));
     }
 
     /**

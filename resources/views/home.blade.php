@@ -39,10 +39,11 @@
         </div>
         {{-- Recommand posts --}}
 
-        <div>
+        <div class="mb-4">
             <h2 class="text-lg sm:text-xl font-bold text-blue-500 uppercase pb-1 border-b-2 border-blue-500 mb-3">
                 Recommand Posts
             </h2>
+
             <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
                 @foreach ($recommandPosts as $post)
                     <x-post-item :post="$post" :showAuthor="false"></x-post-item>
@@ -50,8 +51,18 @@
             </div>
         </div>
         {{-- latest categories --}}
-        <div>
-
+        <div class="mb-4">
+            <h2 class="text-lg sm:text-xl font-bold text-blue-500 uppercase pb-1 border-b-2 border-blue-500 mb-3">
+                Recent Categories
+            </h2>
+            @foreach ($categories as $category)
+                    <h2 class="text-center text-xl font-bold">{{$category->title}}</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        @foreach ($category->publishedPosts()->limit(3)->get() as $post)
+                            <x-post-item :post="$post" :show-author="false"/>
+                        @endforeach
+                    </div>
+            @endforeach
         </div>
     </div>
     {{-- <section class="w-full md:w-2/3 flex flex-col items-center px-3">
