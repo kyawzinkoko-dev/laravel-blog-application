@@ -48,7 +48,7 @@
                 @endif
                 </div>
         </div>
-        <livewire:comments/>
+        <livewire:comments :post="$post"/>
     </section>
     <x-side-bar/>
 </div>
