@@ -8,10 +8,6 @@
     <meta name="author" content="">
     <meta name="" content="{{ $metaDescription }}">
 
-    {{-- Tailwind  --}}
-    {{-- <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet"> --}}
-    {{-- alpin js  --}}
-    {{-- <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>   --}}
     @livewireStyles
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     <style>
@@ -33,17 +29,11 @@
 </head>
 
 <body class="bg-white font-family-karla">
- 
+
     <!-- Top Bar Nav -->
-    <nav class="w-full py-4 bg-blue-800 shadow">
+    {{-- <nav class="w-full py-4 bg-blue-800 shadow">
         <div class="w-full container mx-auto flex flex-wrap items-center justify-between">
 
-            <nav>
-                <ul class="flex items-center justify-between font-bold text-sm text-white uppercase no-underline">
-                    <li><a class="hover:text-gray-200 hover:underline px-4" href="#">Shop</a></li>
-                    <li><a class="hover:text-gray-200 hover:underline px-4" href="#">About</a></li>
-                </ul>
-            </nav>
 
             <div class="flex items-center text-lg no-underline text-white pr-6">
                 <a class="" href="#">
@@ -61,7 +51,7 @@
             </div>
         </div>
 
-    </nav>
+    </nav> --}}
 
     <!-- Text Header -->
     <header class="w-full container mx-auto">
@@ -77,6 +67,7 @@
 
     <!-- Topic Nav -->
     <nav class="w-full py-4 border-t border-b bg-gray-100" x-data="{ open: false }">
+
         <div class="block sm:hidden">
             <a href="#"
                 class=" md:hidden text-base font-bold uppercase text-center flex justify-center items-center"
@@ -149,11 +140,17 @@
         </div>
     </nav>
 
+    <div class="w-full container mx-auto">
+        <form action="{{ route('search') }}" class="p-3"><input name="q" value="{{request('q')}}"
+                class="w-full rounded focus:outline-none focus:border-gray-400 focus:ring-2 focus:ring-gray-500 text-gray-500"
+                placeholder="type something to search " /></form>
 
+        {{ $slot }}
+    </div>
 
 
     <!-- Post Section -->
-    {{ $slot }}
+
 
     <!-- Sidebar Section -->
 

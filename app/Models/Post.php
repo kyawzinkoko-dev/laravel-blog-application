@@ -39,16 +39,34 @@ class Post extends Model
     { 
         return Str::words(strip_tags($this->body),$words);
     }
+
+    /**
+     * search body 
+     * 
+     */
+    public function searchBody($query,$wordAround){
+        $bodyWithoutTag = strip_tags($this->body);
+        $position = stripos($bodyWithoutTag,$query);
+        if($position){
+            $start = max(0,$position - $wordAround);
+            $end = min(strlen($bodyWithoutTag),$position + strlen($query) + $wordAround);
+            $surroundingText = substr($bodyWithoutTag,$start,$end- $start);
+            $highLightText = str_ireplace($query, '<span class="bg-yellow-300">' . $query . '</span>', $surroundingText);
+            return $highLightText;
+        }
+    }
     public function getFormattedDate(){
        
         return $this->published_at->format('F jS Y');
     }
+
+
     //get thumbnail
     public function getThumbnail(){
         if(str_starts_with($this->thumbnail,'http')){
             return $this->thumbnail;
         }
-        
+         
             return '/storage/'.$this->thumbnail;
         
         

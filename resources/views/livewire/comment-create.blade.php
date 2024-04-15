@@ -1,10 +1,10 @@
 <div class="">
     <div  x-data="{
-        focus: {{$reply ? 'true' : 'false'}},
+        focus: {{$parentComment ? 'true' : 'false'}},
         isEdit: {{$commentModel ? 'true':'false'}},
         init(){
             console.log(this.isEdit)
-            if(this.isEdit){
+            if(this.isEdit || this.focus){
                 this.$refs.input.focus()
             }
             window.Livewire.on('commentCreated',()=>{
