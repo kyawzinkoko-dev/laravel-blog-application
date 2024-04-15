@@ -1,7 +1,7 @@
 # Laravel 10 blogging application 
 
 
-### his Blog application is built using Filament PHP for admin panel.
+### this Blog application is built using Filament PHP for admin panel.
 
 ## Installing with docker
 ### 1. Clone the repo
