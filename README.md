@@ -6,7 +6,7 @@
 ## Installing with docker
 ### 1. Clone the repo
 ```bash
-git clone https://github.com/KyawZinKoKo2003/laravel-blog-application.git
+git clone https://github.com/kyawzinkoko-dev/laravel-blog-application.git
 ```
 
 ### 2. Run `composer install`
